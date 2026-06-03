@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mi Amor ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#ff9ecf,#ffd6e8);
+    overflow:hidden;
+    height:100vh;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    color:white;
+    margin-bottom:20px;
+    text-shadow:2px 2px 5px rgba(0,0,0,0.2);
+}
+
+button{
+    padding:15px 30px;
+    margin:10px;
+    border:none;
+    border-radius:15px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#abrir{
+    background:white;
+    color:#ff4081;
+}
+
+#si{
+    background:#ff4081;
+    color:white;
+}
+
+#no{
+    background:#666;
+    color:white;
+    position:absolute;
+}
+
+.oculto{
+    display:none;
+}
+
+.carta{
+    max-width:700px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    animation:aparecer 1s;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:scale(0.5);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.corazon{
+    position:absolute;
+    color:red;
+    font-size:25px;
+    animation:subir 4s linear forwards;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-800px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="pantalla1">
+    <h1>💌 Tengo algo muy importante que preguntarte 💌</h1>
+    <button id="abrir">Abrir Carta</button>
+</div>
+
+<div class="container oculto" id="pantalla2">
+    <h1>💍 ¿Quieres ser mi esposa? 💍</h1>
+
+    <div>
+        <button id="si">Sí ❤️</button>
+        <button id="no">No 😢</button>
+    </div>
+</div>
+
+<div class="container oculto" id="pantalla3">
+    <div class="carta">
+        <h1 style="color:#ff4081">❤️ Para el amor de mi vida ❤️</h1>
+
+        <p style="font-size:20px; margin-top:20px;">
+            Mi amor,
+        </p>
+
+        <p style="margin-top:20px; line-height:1.8;">
+            Gracias por cada sonrisa, cada abrazo y cada momento que hemos compartido.
+            Eres la persona que ilumina mis días y quien hace que todo tenga sentido.
+        </p>
+
+        <p style="margin-top:20px; line-height:1.8;">
+            Quiero seguir construyendo recuerdos contigo,
+            apoyarte en cada sueño y caminar juntos en cada etapa de la vida.
+        </p>
+
+        <p style="margin-top:20px; line-height:1.8;">
+            Hoy quiero preguntarte algo que nace desde lo más profundo de mi corazón...
+        </p>
+
+        <h2 style="margin-top:30px;color:#ff4081;">
+            ¿Aceptas pasar el resto de tu vida conmigo? 💍✨
+        </h2>
+
+        <h1 style="margin-top:30px;">
+            TE AMO ❤️
+        </h1>
+    </div>
+</div>
+
+<script>
+
+const abrir = document.getElementById("abrir");
+const pantalla1 = document.getElementById("pantalla1");
+const pantalla2 = document.getElementById("pantalla2");
+const pantalla3 = document.getElementById("pantalla3");
+
+abrir.onclick = () =>{
+    pantalla1.classList.add("oculto");
+    pantalla2.classList.remove("oculto");
+};
+
+const botonNo = document.getElementById("no");
+
+botonNo.addEventListener("mouseover",()=>{
+
+    const x = Math.random()*(window.innerWidth-150);
+    const y = Math.random()*(window.innerHeight-100);
+
+    botonNo.style.left = x+"px";
+    botonNo.style.top = y+"px";
+});
+
+document.getElementById("si").onclick = ()=>{
+
+    pantalla2.classList.add("oculto");
+    pantalla3.classList.remove("oculto");
+
+    for(let i=0;i<100;i++){
+
+        setTimeout(()=>{
+
+            let corazon = document.createElement("div");
+
+            corazon.classList.add("corazon");
+            corazon.innerHTML = "❤️";
+
+            corazon.style.left =
+                Math.random()*window.innerWidth + "px";
+
+            corazon.style.top =
+                window.innerHeight + "px";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(()=>{
+                corazon.remove();
+            },4000);
+
+        },i*80);
+    }
+};
+</script>
+
+</body>
+</html>
